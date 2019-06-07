@@ -32,7 +32,7 @@ The program uses Competitive Fragmentation Modeling to produce a probabilistic g
 ## Container Contributors
 
 - [Christoph Ruttkies](https://github.com/c-ruttkies) (IPB-Halle)
-- [Payam Emami](https://github.com/payamemami) (UU)
+- [Payam Emami](https://github.com/payamemami) (UU/NBIS)
 
 ## Website
 
