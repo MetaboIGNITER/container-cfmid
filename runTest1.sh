@@ -10,7 +10,7 @@ wget -O /tmp/testfiles/hmdb_2017-07-23.csv https://github.com/phnmnl/container-c
 
 
 # perform test
-/usr/local/bin/cfmid.r input=/tmp/testfiles/2500_47.4328704_175.0237_.txt candidate_file=/tmp/testfiles/hmdb_2017-07-23.csv output=/tmp/testfiles/output.txt candidate_id=Identifier candidate_inchi_smiles=SMILES candidate_mass=MonoisotopicMass databaseNameColumn=Name databaseInChIColumn=InChI realName=2500_47.4328704_175.0237_.txt
+/usr/local/bin/cfmid.r input=/tmp/testfiles/2500_47.4328704_175.0237_.txt candidate_file=/tmp/testfiles/hmdb_2017-07-23.csv output=/tmp/testfiles/output.txt candidate_id=Identifier candidate_inchi_smiles=SMILES candidate_mass=MonoisotopicMass databaseNameColumn=Name databaseInChIColumn=InChI realName=2500_47.4328704_175.0237_.txt ppmPrecursor=10000
 
 
 # check output

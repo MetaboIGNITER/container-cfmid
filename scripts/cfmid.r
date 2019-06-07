@@ -204,7 +204,7 @@ NeutralPrecursorMass<-as.character(strsplit(splitParams[[1]][[NeutralPrecursorMa
 NeutralPrecursorMass<-as.numeric(NeutralPrecursorMass)
 
 # We need to limit the database to the ones within the range of nmass+-ppms
-mzdeviation = (1000*NeutralPrecursorMass)/1000000
+mzdeviation = (ppmPrecursor*NeutralPrecursorMass)/1000000
 mass_upper = NeutralPrecursorMass+mzdeviation
 mass_lower = NeutralPrecursorMass-mzdeviation
 
