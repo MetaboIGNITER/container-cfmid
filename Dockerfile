@@ -84,7 +84,7 @@ ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$RDBASE/lib:/root/lp_solve_5.5/lpsolve55/bi
 ENV PATH $PATH:/root/cfm-id-code/cfm/bin
 
 RUN cd /root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/ && unzip negative_se_params.zip
-RUN cd /root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/ && unzip params_metab_ce_cfm.zip
+RUN cd /root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/ && unzip params_metab_se_cfm.zip
 
 ENV software_version="3.4.4-1trusty0"
 
