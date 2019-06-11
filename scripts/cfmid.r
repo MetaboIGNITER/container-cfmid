@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 
 options(stringAsfactors = FALSE, useFancyQuotes = FALSE)
-setwd("own_projects/cfmid/")
 # Taking the command line arguments
 args <- commandArgs(trailingOnly = TRUE)
 
