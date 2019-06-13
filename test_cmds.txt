@@ -1,1 +1,1 @@
-/engine/cfm-id-code/cfm/bin/cfm-id
+which cfm-id
