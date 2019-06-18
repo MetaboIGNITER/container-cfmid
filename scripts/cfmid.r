@@ -127,10 +127,6 @@ databaseIndex<-sapply(splitParams,FUN =  function(x){grep(x,pattern = "MetFragDa
 database<-tolower(strsplit(splitParams[[1]][[databaseIndex]],split = "=",fixed=T)[[1]][[2]])
 if(!is.na(DatabaseOverwrite))
   database<-tolower(DatabaseOverwrite)
-cat("Database is set to \"",database,"\"\n")
-if(database=="localcsv")
-  stop("Local database is not supported yet! use any of the following: all, pubchem, bio, kegg, hmdb")
-
 # this is for fragments
 ppmIndex<-sapply(splitParams,FUN =  function(x){grep(x,pattern = "FragmentPeakMatchRelativeMassDeviation",fixed=T)})
 ppm<-as.numeric(strsplit(splitParams[[1]][[ppmIndex]],split = "=",fixed=T)[[1]][[2]])
