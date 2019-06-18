@@ -308,12 +308,12 @@ logFile<-NA
 if(polarity=="+")
 {
 
-logFile<-"/root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/param_output0.log"
-  ModelFilfe<-"/root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/param_config.txt"
+logFile<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/param_output0.log"
+  ModelFilfe<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/param_config.txt"
   
 }else if(polarity=="-"){
-  logFile<-"/root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/param_output0.log"
-  ModelFilfe<-"/root/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/param_config.txt"
+  logFile<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/param_output0.log"
+  ModelFilfe<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/param_config.txt"
   
 }
 if(is.na(ModelFilfe) | is.na(logFile))
