@@ -94,10 +94,10 @@ RUN echo "deb http://cloud.r-project.org/bin/linux/ubuntu trusty/" >> /etc/apt/s
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
 # Install r-base
-RUN apt-get -y update && apt-get -y --no-install-recommends install apt-transport-https r-base=${software_version} r-base-dev=${software_version} && \ 
+RUN apt-get -y update && apt-get -y --no-install-recommends --force-yes install apt-transport-https r-base=${software_version} r-base-dev=${software_version} && \ 
     apt-get -y clean && apt-get -y autoremove && rm -rf /var/lib/{cache,log}/ /tmp/* /var/tmp/*
 
-RUN  R -e 'source("https://bioconductor.org/biocLite.R");biocLite("tools")' 
+RUN  R -e 'source("https://bioconductor.org/biocLite.R");biocLite("tools")'
 
 ADD scripts/*.r /usr/local/bin/
 RUN chmod +x /usr/local/bin/*.r
