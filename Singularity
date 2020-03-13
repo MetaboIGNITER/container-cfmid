@@ -96,10 +96,12 @@ cd /engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models
 software_version="3.4.4-1trusty0"
 
 # Add cran R backport
+
+
 echo "deb http://cloud.r-project.org/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list && \
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 
-# Install r-base
+# Install r-base and remove not needed stuff
 apt-get -y update && apt-get -y --no-install-recommends --force-yes install apt-transport-https r-base=${software_version} r-base-dev=${software_version} && \
 apt-get -y clean && apt-get -y autoremove && rm -rf /var/lib/{cache,log}/ /tmp/* /var/tmp/*
 
