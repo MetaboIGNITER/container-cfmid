@@ -104,3 +104,6 @@ RUN chmod +x /usr/local/bin/*.r
 
 ADD runTest1.sh /usr/local/bin/runTest1.sh
 RUN chmod +x /usr/local/bin/runTest1.sh
+
+# Install Parallel
+RUN apt-get -y install parallel
