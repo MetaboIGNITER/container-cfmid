@@ -29,7 +29,7 @@ for(arg in args)
 {
   argCase<-strsplit(x = arg,split = "=")[[1]][1]
   value<-strsplit(x = arg,split = "=")[[1]][2]
-  
+
   if(argCase=="realName")
   {
     realName=as.character(value)
@@ -54,7 +54,7 @@ for(arg in args)
   {
     absDevOverwrite=as.numeric(value)
   }
-  
+
   if(argCase=="database")
   {
     DatabaseOverwrite=as.character(value)
@@ -63,17 +63,17 @@ for(arg in args)
   {
     IonizationOverwrite=as.character(value)
   }
-  
+
   if(argCase=="databaseFile")
   {
     candidate_file=as.character(value)
   }
-  
+
   if(argCase=="candidate_id")
   {
     candidate_id=as.character(value)
   }
-  
+
   if(argCase=="candidate_inchi_smiles")
   {
     candidate_inchi_smiles=as.character(value)
@@ -83,12 +83,12 @@ for(arg in args)
   {
     candidate_mass=as.character(value)
   }
-  
+
   if(argCase=="scoreType")
   {
     scoreType=as.character(value)
   }
-  
+
   if(argCase=="databaseNameColumn")
   {
     databaseNameColumn=as.character(value)
@@ -97,13 +97,13 @@ for(arg in args)
   {
     databaseInChIColumn=as.character(value)
   }
-  
+
 
   if(argCase=="output")
   {
     outputCSV=as.character(value)
   }
-  
+
 }
 
 
@@ -178,7 +178,7 @@ if(is.na(ionization) | is.null(ionization) | ionization=="")
 # extract polarity
 polarity<-gsub(pattern = "\\[(.*?)\\]",replacement = "",x =ionization ,fixed = F)
 if(!polarity%in%c("+","-")){
-  
+
   stop("failed to extract the polarity! check PrecursorIonType! It must have the polarity sign. It should be like [blabla]+ or [blabla]-")
 }
 
@@ -280,7 +280,7 @@ candidateFile<-candidateFile[limitCandiateFile==TRUE,]
 
 if(nrow(candidateFile)<0)
 {
- 
+
   return( cat("Empty results! Nothing will be written out!\n"))
 }
 
@@ -290,7 +290,7 @@ if(is.na(scoreType))
 }
 if(!scoreType%in%c("DotProduct","Jaccard"))
 {
-  stop("scoreType must be either DotProduct or Jaccard") 
+  stop("scoreType must be either DotProduct or Jaccard")
 }
 
 
@@ -310,17 +310,17 @@ if(polarity=="+")
 
 logFile<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/param_output0.log"
   ModelFilfe<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/metab_se_cfm/param_config.txt"
-  
+
 }else if(polarity=="-"){
   logFile<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/param_output0.log"
   ModelFilfe<-"/engine/cfm-id-code/cfm/supplementary_material/trained_models/esi_msms_models/negative_metab_se_cfm/param_config.txt"
-  
+
 }
 if(is.na(ModelFilfe) | is.na(logFile))
 {
   stop("Something wrong with the polarity")
 }
-  
+
 if(!file.exists(logFile))
 {
   stop("CFM-ID logFile does not exist")
@@ -350,10 +350,10 @@ if(file.exists(outputFileTMP) && file.size(outputFileTMP)>0)
   {
    completeDataResults<- merge.data.frame(tmpDataResults,candidateFile,by = c(candidate_id,candidate_inchi_smiles))
    completeDataResults<-completeDataResults[order(completeDataResults[,"IndexCFM"],decreasing = F),]
-   
+
    parentRT<-as.numeric(strsplit(compound,split = "_",fixed = T)[[1]][2])
-   parentFile<-(strsplit(compound,split = "_",fixed = T)[[1]][4])
-   
+   parentFile<-paste((strsplit(compound,split = "_",fixed = T)[[1]][-c(1,2,3)]),collapse = "_")
+
    if(parentFile==".txt")
    {
      parentFile<-"NotFound"
@@ -361,11 +361,11 @@ if(file.exists(outputFileTMP) && file.size(outputFileTMP)>0)
      parentFile<-gsub(pattern = ".txt",replacement = "",x = parentFile,fixed = T)
    }
    cat("Setting headers required for downstream ...\n")
-   
+
    completeDataResults<-data.frame(fileName=parentFile,parentMZ=parentmass,parentRT=parentRT,completeDataResults)
-   
+
    colnames(completeDataResults)[which(colnames(completeDataResults)==candidate_id)]<-"Identifier"
-   colnames(completeDataResults)[which(colnames(completeDataResults)==databaseInChIColumn)]<-"InChI" 
+   colnames(completeDataResults)[which(colnames(completeDataResults)==databaseInChIColumn)]<-"InChI"
    colnames(completeDataResults)[which(colnames(completeDataResults)==databaseNameColumn)]<-"Name"
 
    cat("Writing the results ...\n")
@@ -374,8 +374,8 @@ if(file.exists(outputFileTMP) && file.size(outputFileTMP)>0)
   }else{
     cat("No result file!")
   }
-  
-  
+
+
 }else{
   cat("No result file!\n Writting out the log:\n")
   cat(t1)
